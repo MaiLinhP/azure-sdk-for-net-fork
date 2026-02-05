@@ -332,7 +332,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Type.Enum.Fixed.String.getKnownValue",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Type.Enum.Fixed"
               },
               "parameters": [
                 {
@@ -433,7 +434,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Type.Enum.Fixed.String.putKnownValue",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Type.Enum.Fixed"
               },
               "parameters": [
                 {
@@ -442,7 +444,7 @@
                   "name": "contentType",
                   "serializedName": "Content-Type",
                   "type": {
-                    "$ref": "16"
+                    "$ref": "14"
                   },
                   "location": "Header",
                   "isApiVersion": false,
@@ -548,7 +550,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Type.Enum.Fixed.String.putUnknownValue",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Type.Enum.Fixed"
               },
               "parameters": [
                 {
@@ -557,7 +560,7 @@
                   "name": "contentType",
                   "serializedName": "Content-Type",
                   "type": {
-                    "$ref": "20"
+                    "$ref": "18"
                   },
                   "location": "Header",
                   "isApiVersion": false,
@@ -632,9 +635,11 @@
           "apiVersions": [],
           "parent": {
             "$ref": "22"
-          }
+          },
+          "isMultiServiceClient": false
         }
-      ]
+      ],
+      "isMultiServiceClient": false
     }
   ]
 }

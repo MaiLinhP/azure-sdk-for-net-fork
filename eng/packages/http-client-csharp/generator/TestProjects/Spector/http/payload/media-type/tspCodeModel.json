@@ -255,7 +255,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Payload.MediaType.StringBody.sendAsText",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Payload.MediaType.StringBody"
               },
               "parameters": [
                 {
@@ -264,7 +265,7 @@
                   "name": "contentType",
                   "serializedName": "Content-Type",
                   "type": {
-                    "$ref": "3"
+                    "$ref": "1"
                   },
                   "location": "Header",
                   "isApiVersion": false,
@@ -366,7 +367,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Payload.MediaType.StringBody.getAsText",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Payload.MediaType.StringBody"
               },
               "parameters": [
                 {
@@ -468,7 +470,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Payload.MediaType.StringBody.sendAsJson",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Payload.MediaType.StringBody"
               },
               "parameters": [
                 {
@@ -477,7 +480,7 @@
                   "name": "contentType",
                   "serializedName": "Content-Type",
                   "type": {
-                    "$ref": "11"
+                    "$ref": "9"
                   },
                   "location": "Header",
                   "isApiVersion": false,
@@ -579,7 +582,8 @@
                 "generateProtocolMethod": true,
                 "generateConvenienceMethod": true,
                 "crossLanguageDefinitionId": "Payload.MediaType.StringBody.getAsJson",
-                "decorators": []
+                "decorators": [],
+                "namespace": "Payload.MediaType.StringBody"
               },
               "parameters": [
                 {
@@ -649,9 +653,11 @@
           "apiVersions": [],
           "parent": {
             "$ref": "17"
-          }
+          },
+          "isMultiServiceClient": false
         }
-      ]
+      ],
+      "isMultiServiceClient": false
     }
   ]
 }

@@ -238,7 +238,8 @@
             "generateProtocolMethod": true,
             "generateConvenienceMethod": true,
             "crossLanguageDefinitionId": "Versioning.ReturnTypeChangedFrom.test",
-            "decorators": []
+            "decorators": [],
+            "namespace": "Versioning.ReturnTypeChangedFrom"
           },
           "parameters": [
             {
@@ -247,7 +248,7 @@
               "name": "contentType",
               "serializedName": "Content-Type",
               "type": {
-                "$ref": "11"
+                "$ref": "5"
               },
               "location": "Header",
               "isApiVersion": false,
@@ -364,7 +365,8 @@
       "apiVersions": [
         "v1",
         "v2"
-      ]
+      ],
+      "isMultiServiceClient": false
     }
   ]
 }
