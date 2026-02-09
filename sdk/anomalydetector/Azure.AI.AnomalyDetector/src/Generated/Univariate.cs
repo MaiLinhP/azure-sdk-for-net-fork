@@ -26,14 +26,13 @@ namespace Azure.AI.AnomalyDetector
         }
 
         /// <summary> Initializes a new instance of Univariate. </summary>
+        /// <param name="clientDiagnostics"> The ClientDiagnostics is used to provide tracing support for the client library. </param>
         /// <param name="pipeline"> The HTTP pipeline for sending and receiving REST requests and responses. </param>
-        /// <param name="endpoint">
-        /// Supported Azure Cognitive Services endpoints (protocol and host name, such as
-        /// https://westus2.api.cognitive.microsoft.com).
-        /// </param>
+        /// <param name="endpoint"> Service endpoint. </param>
         /// <param name="apiVersion"></param>
-        internal Univariate(HttpPipeline pipeline, string endpoint, string apiVersion)
+        internal Univariate(ClientDiagnostics clientDiagnostics, HttpPipeline pipeline, Uri endpoint, string apiVersion)
         {
+            ClientDiagnostics = clientDiagnostics;
             _endpoint = endpoint;
             Pipeline = pipeline;
             _apiVersion = apiVersion;

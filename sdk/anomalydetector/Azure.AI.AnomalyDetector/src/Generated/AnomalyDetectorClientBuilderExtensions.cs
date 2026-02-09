@@ -18,17 +18,13 @@ namespace Microsoft.Extensions.Azure
     {
         /// <summary> Registers a <see cref="AnomalyDetectorClient"/> client with the specified <see cref="IAzureClientBuilder{TClient,TOptions}"/>. </summary>
         /// <param name="builder"> The builder to register with. </param>
-        /// <param name="endpoint">
-        /// Supported Azure Cognitive Services endpoints (protocol and host name, such as
-        /// https://westus2.api.cognitive.microsoft.com).
-        /// </param>
+        /// <param name="endpoint"> Service endpoint. </param>
         /// <param name="credential"> A credential used to authenticate to the service. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="endpoint"/> or <paramref name="credential"/> is null. </exception>
-        /// <exception cref="ArgumentException"> <paramref name="endpoint"/> is an empty string, and was expected to be non-empty. </exception>
-        public static IAzureClientBuilder<AnomalyDetectorClient, AnomalyDetectorClientOptions> AddAnomalyDetectorClient<TBuilder>(this TBuilder builder, string endpoint, AzureKeyCredential credential)
+        public static IAzureClientBuilder<AnomalyDetectorClient, AnomalyDetectorClientOptions> AddAnomalyDetectorClient<TBuilder>(this TBuilder builder, Uri endpoint, AzureKeyCredential credential)
             where TBuilder : IAzureClientFactoryBuilder
         {
-            Argument.AssertNotNullOrEmpty(endpoint, nameof(endpoint));
+            Argument.AssertNotNull(endpoint, nameof(endpoint));
             Argument.AssertNotNull(credential, nameof(credential));
 
             return builder.RegisterClientFactory<AnomalyDetectorClient, AnomalyDetectorClientOptions>(options => new AnomalyDetectorClient(endpoint, credential, options));
