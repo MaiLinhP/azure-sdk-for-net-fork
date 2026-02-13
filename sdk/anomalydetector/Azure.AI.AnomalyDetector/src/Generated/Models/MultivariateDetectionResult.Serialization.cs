@@ -38,6 +38,19 @@ namespace Azure.AI.AnomalyDetector
             }
         }
 
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<MultivariateDetectionResult>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, AzureAIAnomalyDetectorContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(MultivariateDetectionResult)} does not support writing '{options.Format}' format.");
+            }
+        }
+
         /// <param name="response"> The <see cref="Response"/> to deserialize the <see cref="MultivariateDetectionResult"/> from. </param>
         public static explicit operator MultivariateDetectionResult(Response response)
         {
@@ -152,19 +165,6 @@ namespace Azure.AI.AnomalyDetector
 
         /// <param name="options"> The client options for reading and writing models. </param>
         BinaryData IPersistableModel<MultivariateDetectionResult>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        /// <param name="options"> The client options for reading and writing models. </param>
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<MultivariateDetectionResult>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, AzureAIAnomalyDetectorContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(MultivariateDetectionResult)} does not support writing '{options.Format}' format.");
-            }
-        }
 
         /// <param name="data"> The data to parse. </param>
         /// <param name="options"> The client options for reading and writing models. </param>

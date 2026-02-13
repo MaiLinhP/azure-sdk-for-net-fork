@@ -33,6 +33,19 @@ namespace Azure.AI.AnomalyDetector
             }
         }
 
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<UnivariateChangePointDetectionResult>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    return ModelReaderWriter.Write(this, options, AzureAIAnomalyDetectorContext.Default);
+                default:
+                    throw new FormatException($"The model {nameof(UnivariateChangePointDetectionResult)} does not support writing '{options.Format}' format.");
+            }
+        }
+
         /// <param name="response"> The <see cref="Response"/> to deserialize the <see cref="UnivariateChangePointDetectionResult"/> from. </param>
         public static explicit operator UnivariateChangePointDetectionResult(Response response)
         {
@@ -178,19 +191,6 @@ namespace Azure.AI.AnomalyDetector
 
         /// <param name="options"> The client options for reading and writing models. </param>
         BinaryData IPersistableModel<UnivariateChangePointDetectionResult>.Write(ModelReaderWriterOptions options) => PersistableModelWriteCore(options);
-
-        /// <param name="options"> The client options for reading and writing models. </param>
-        protected virtual BinaryData PersistableModelWriteCore(ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<UnivariateChangePointDetectionResult>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    return ModelReaderWriter.Write(this, options, AzureAIAnomalyDetectorContext.Default);
-                default:
-                    throw new FormatException($"The model {nameof(UnivariateChangePointDetectionResult)} does not support writing '{options.Format}' format.");
-            }
-        }
 
         /// <param name="data"> The data to parse. </param>
         /// <param name="options"> The client options for reading and writing models. </param>
