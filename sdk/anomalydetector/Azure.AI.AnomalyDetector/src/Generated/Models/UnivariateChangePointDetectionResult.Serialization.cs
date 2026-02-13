@@ -16,6 +16,30 @@ namespace Azure.AI.AnomalyDetector
     /// <summary> Response of change point detection. </summary>
     public partial class UnivariateChangePointDetectionResult : IJsonModel<UnivariateChangePointDetectionResult>
     {
+        /// <param name="data"> The data to parse. </param>
+        /// <param name="options"> The client options for reading and writing models. </param>
+        protected virtual UnivariateChangePointDetectionResult PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
+        {
+            string format = options.Format == "W" ? ((IPersistableModel<UnivariateChangePointDetectionResult>)this).GetFormatFromOptions(options) : options.Format;
+            switch (format)
+            {
+                case "J":
+                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
+                    {
+                        return DeserializeUnivariateChangePointDetectionResult(document.RootElement, options);
+                    }
+                default:
+                    throw new FormatException($"The model {nameof(UnivariateChangePointDetectionResult)} does not support reading '{options.Format}' format.");
+            }
+        }
+
+        /// <param name="response"> The <see cref="Response"/> to deserialize the <see cref="UnivariateChangePointDetectionResult"/> from. </param>
+        public static explicit operator UnivariateChangePointDetectionResult(Response response)
+        {
+            using JsonDocument document = JsonDocument.Parse(response.Content, ModelSerializationExtensions.JsonDocumentOptions);
+            return DeserializeUnivariateChangePointDetectionResult(document.RootElement, ModelSerializationExtensions.WireOptions);
+        }
+
         /// <param name="writer"> The JSON writer. </param>
         /// <param name="options"> The client options for reading and writing models. </param>
         void IJsonModel<UnivariateChangePointDetectionResult>.Write(Utf8JsonWriter writer, ModelReaderWriterOptions options)
@@ -172,31 +196,7 @@ namespace Azure.AI.AnomalyDetector
         /// <param name="options"> The client options for reading and writing models. </param>
         UnivariateChangePointDetectionResult IPersistableModel<UnivariateChangePointDetectionResult>.Create(BinaryData data, ModelReaderWriterOptions options) => PersistableModelCreateCore(data, options);
 
-        /// <param name="data"> The data to parse. </param>
-        /// <param name="options"> The client options for reading and writing models. </param>
-        protected virtual UnivariateChangePointDetectionResult PersistableModelCreateCore(BinaryData data, ModelReaderWriterOptions options)
-        {
-            string format = options.Format == "W" ? ((IPersistableModel<UnivariateChangePointDetectionResult>)this).GetFormatFromOptions(options) : options.Format;
-            switch (format)
-            {
-                case "J":
-                    using (JsonDocument document = JsonDocument.Parse(data, ModelSerializationExtensions.JsonDocumentOptions))
-                    {
-                        return DeserializeUnivariateChangePointDetectionResult(document.RootElement, options);
-                    }
-                default:
-                    throw new FormatException($"The model {nameof(UnivariateChangePointDetectionResult)} does not support reading '{options.Format}' format.");
-            }
-        }
-
         /// <param name="options"> The client options for reading and writing models. </param>
         string IPersistableModel<UnivariateChangePointDetectionResult>.GetFormatFromOptions(ModelReaderWriterOptions options) => "J";
-
-        /// <param name="response"> The <see cref="Response"/> to deserialize the <see cref="UnivariateChangePointDetectionResult"/> from. </param>
-        public static explicit operator UnivariateChangePointDetectionResult(Response response)
-        {
-            using JsonDocument document = JsonDocument.Parse(response.Content, ModelSerializationExtensions.JsonDocumentOptions);
-            return DeserializeUnivariateChangePointDetectionResult(document.RootElement, ModelSerializationExtensions.WireOptions);
-        }
     }
 }
